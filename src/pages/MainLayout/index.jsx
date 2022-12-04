@@ -1,5 +1,7 @@
 import './style.sass'
 import logo  from '../../assets/img/logo.png'
+import { Home } from '../Home'
+import { Link, Outlet } from 'react-router-dom'
 
 export function MainLayout(){
   return(
@@ -11,12 +13,16 @@ export function MainLayout(){
       </header>
       <aside className="container-aside">
         <div className="aside-content">
-
+          <ul className="content">
+            <li>
+              <Link to="home">home</Link>
+            </li>
+          </ul>
         </div>
       </aside>
       <main className="container-main">
         <div className="main-content">
-          
+          <Outlet />
         </div>
       </main>
     </div>
