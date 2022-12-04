@@ -1,0 +1,38 @@
+@use '../../style/variables'
+
+.container
+  display: grid
+  grid-template-columns: 300px 1fr
+  grid-template-areas: 'header header' 'aside main'
+
+  .container-header
+    grid-area: header
+    background-image: variables.$linear-primary-color
+
+
+    .logo-dente-azul
+      padding: 1rem 4rem
+
+  .container-aside
+    grid-area: aside
+    background-color: variables.$gray100
+    width: 100%
+    height: 100vh
+    padding: 0.5rem
+
+    .aside-content
+      width: 100%
+      height: 100%
+      background-color: variables.$gray0
+      border-radius: 1rem
+
+  .container-main
+    grid-area: main
+    background-color: variables.$gray100
+    padding: 0.5rem
+
+    .main-content
+      width: 100%
+      height: 100%
+      background-color: variables.$gray0
+      border-radius: 1rem
