@@ -5,13 +5,16 @@
   background-color: variables.$gray100
   border-radius: 0.75rem
   // padding: 1rem 0 1rem 1rem
-  width: 300px
+  max-width: 25rem
 
   .fav-dentist
     width: 1.25rem
     height: 1.25rem
-    color: variables.$second-color
+    color: variables.$gray600
     cursor: pointer
+
+    &.select-fav
+      color: variables.$second-color
 
   .dentist-info
     display: flex
@@ -28,14 +31,17 @@
       font-weight: variables.$fond-xs
 
   .btn-view-dentist
+    display: flex
+    align-items: center
     background-color: variables.$primary-color
     padding: 2rem
     border-radius: 0.75rem
     border: none
     cursor: pointer
+    transition: 0.6s
     font-size: variables.$h2-18px
     font-weight: variables.$fond-xs
-    transition: 0.6s
+    color: variables.$gray1000
 
   .btn-view-dentist:hover
     background-color: variables.$second-color

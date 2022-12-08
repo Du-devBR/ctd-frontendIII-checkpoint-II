@@ -14,8 +14,11 @@ export function MainLayout(){
       <aside className="container-aside">
         <div className="aside-content">
           <ul className="content">
-            <li for='teste' className='item-list'>
-              <Link id='teste' to="home">Home</Link>
+            <li className='item-list'>
+              <Link  to="home">Home</Link>
+            </li>
+            <li className='item-list'>
+              <Link  to="fav">Fav</Link>
             </li>
           </ul>
         </div>

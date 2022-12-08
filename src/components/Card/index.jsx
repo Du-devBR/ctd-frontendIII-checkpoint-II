@@ -1,18 +1,42 @@
 import './style.sass'
 import iconDentist from '../../assets/img/iconDentist.png'
 import { Star } from 'phosphor-react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-export function CardDentist(){
+export function CardDentist(props){
+  const [fav, setFav] = useState(false)
+  const [dentistFav, setDentistFav] = useState([])
+
+  const checkedFavDentist = () => {
+
+    setFav(true)
+    console.log('adicionado')
+
+  }
+
+  const unCheckedFavDentist = () => {
+
+    setFav(false)
+    console.log('retirado')
+
+  }
+
   return(
     <>
       <div className="container-card">
 
         <div className="dentist-info">
-          <Star className='fav-dentist'/>
+          <Star className={`fav-dentist ${fav ? 'select-fav' : '' }`} onClick={fav ? unCheckedFavDentist : checkedFavDentist}/>
           <img src={iconDentist} alt="icone dentista sexo feminino, jaleco cor branco e cabelo cor marrom" />
-          <p>Dra Dentista Azul</p>
+          <p>{props.data.nome} {props.data.sobrenome}</p>
         </div>
-        <button className='btn-view-dentist'>+</button>
+        <Link
+          className='btn-view-dentist'
+          to={`/dentist/${props.data.nome}`}
+          >
+          +
+        </Link>
       </div>
     </>
   )
