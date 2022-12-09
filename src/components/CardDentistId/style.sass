@@ -6,15 +6,25 @@
   display: flex
   justify-content: center
   align-items: center
-  
+  flex-direction: column
+  position: relative
+
   .detail-dentist
     display: flex
+    position: relative
     gap: 1rem
     width: 500px
     background-color: variables.$gray100
     justify-content: space-between
     padding: 2rem
+    z-index: 0
+    transition: 1s
 
     .container-info-dentist
       display: flex
       flex-direction: column
+
+  .container-modal
+    opacity: 1
+    visibility: visible
+    position: absolute
