@@ -1,14 +1,11 @@
 import { Target } from 'phosphor-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CardDentist } from '../../components/Card'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
 import './style.sass'
 // import bannerHome from '../../assets/img/banner-home.png'
 
 export function Home(){
-
-  const [fav, setFav] = useState(false)
-  const [dentistFav, setDentistFav] = useState([])
-  const [dentist, setDentist] = useState([])
 
   const dataUser = [{
 
@@ -61,29 +58,7 @@ export function Home(){
   }
 ]
 
-// const checkedFavDentist = (currentFav) => {
-
-//   {
-//     dataUser.map((map) => {
-//       if(currentFav.nome !== map.nome){
-//         setFav(false)
-//         console.log('adicionado')
-//       }else{
-//         setFav(true)
-//         console.log('retirado')
-//       }
-
-//     })
-//   }
-
-// }
-
-// const unCheckedFavDentist = (currentFav) => {
-
-//   setFav(false)
-//   console.log(currentFav)
-
-// }
+const [ favStorage, setFavStorage] = useLocalStorage('', 'fav')
 
   return(
     <>
@@ -100,8 +75,8 @@ export function Home(){
             dataUser.map((user) => (
               <CardDentist
                 data = {user}
-                onClickFav = {currentFav => checkedFavDentist(currentFav)}
-                // onClickFav = {currentFav => fav ? unCheckedFavDentist(currentFav) : checkedFavDentist(currentFav)}
+                onClickFavorite = {currentFav => setFavStorage([...favStorage, currentFav])}
+                // onchangeFav = {currentFavSelect => checkedFavDentist(currentFavSelect)}
               />
             ))
           }
