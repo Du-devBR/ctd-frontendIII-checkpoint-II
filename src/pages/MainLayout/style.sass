@@ -7,12 +7,24 @@
   height: 100%
 
   .container-header
+    display: flex
+    padding: 1rem 0.5rem
+    justify-content: space-between
+    align-items: center
     grid-area: header
     background-image: variables.$linear-primary-color
 
+    .btn-login
+          padding: 0.75rem 4rem
+          background-color: variables.$second-color
+          border: none
+          // width: 70%
+          border-radius: 1rem
 
-    .logo-dente-azul
-      padding: 1rem 4rem
+          a
+            color: variables.$gray1000
+            font-weight: variables.$fond-xs
+            text-transform: uppercase
 
   .container-aside
     grid-area: aside

@@ -1,11 +1,87 @@
+@use '../../style/variables'
 .container-modal-notShow
   opacity: 0
+  // opacity: 1
+    // visibility: visible
+  position: absolute
 
 .container-modal-show
+  display: flex
+  position: absolute
   opacity: 1
   flex-direction: column
   z-index: 1
-  width: 400px
-  height: 200px
-  background-color: #c2c2c2
+  width: 70%
+  height:100%
+  background-color: variables.$gray0
+  border: solid 1px variables.$gray100
+  border-radius: 1rem
   transition: 1s
+  padding: 1rem
+  gap: 2rem
+
+
+  .header-shedule
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+
+
+    .title-shedule
+      font-size: variables.$h2-18px
+      font-weight: variables.$fond-xs
+      color: variables.$gray1000
+
+    .btn-closed
+      color: variables.$gray600
+      border: none
+      background-color: transparent
+      font-size: variables.$h2-18px
+      font-weight: variables.$fond-xs
+      cursor: pointer
+
+  .form-shedule
+    display: flex
+    flex-direction: column
+    gap: 2rem
+
+    .input-pacient, .input-dentist
+      display: flex
+      flex-direction: column
+      gap: 0.5rem
+
+      label
+        font-size: variables.$h2-14px
+        font-weight: variables.$font-md
+        color: variables.$gray800
+
+      select
+        border: none
+        background-color: variables.$gray100-opacity10
+        padding: 0.5rem
+        border-radius: 0.75rem
+        color: variables.$gray600
+
+        option
+          color: variables.$gray600
+
+    .date-time-shedule
+      border: none
+      background-color: variables.$gray100-opacity10
+      padding: 0.5rem
+      border-radius: 0.75rem
+      color: variables.$gray600
+
+
+    .btn-submit-shedule
+      width: 50%
+      align-self: flex-end
+      border: none
+      padding: 0.5rem 0
+      border-radius: 0.75rem
+      background-color: variables.$second-color
+      color: variables.$gray1000
+      font-weight: variables.$fond-xs
+      font-size: variables.$h2-14px
+      text-transform: uppercase
+      cursor: pointer

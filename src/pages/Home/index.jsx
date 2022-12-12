@@ -58,7 +58,17 @@ export function Home(){
   }
 ]
 
-const [ favStorage, setFavStorage] = useLocalStorage('', 'fav')
+const [ favStorage, setFavStorage] = useState([])
+
+function teste(currentFav){
+
+  setFavStorage([...favStorage, currentFav])
+
+}
+
+useEffect(() => {
+  localStorage.setItem('fav', JSON.stringify(favStorage))
+}, [favStorage])
 
   return(
     <>
@@ -75,7 +85,7 @@ const [ favStorage, setFavStorage] = useLocalStorage('', 'fav')
             dataUser.map((user) => (
               <CardDentist
                 data = {user}
-                onClickFavorite = {currentFav => setFavStorage([...favStorage, currentFav])}
+                onClickFavorite = {currentFav => teste(currentFav) }
                 // onchangeFav = {currentFavSelect => checkedFavDentist(currentFavSelect)}
               />
             ))

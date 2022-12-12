@@ -10,6 +10,9 @@ export function MainLayout(){
         <div className="logo-dente-azul">
           <img src={logo} alt="desenho de um dente na cor azul e a frente está escrito Dente azul clinica Odontologica" />
         </div>
+        <button className='btn-login'>
+              <Link  to="auth">Login</Link>
+            </button>
       </header>
       <aside className="container-aside">
         <div className="aside-content">

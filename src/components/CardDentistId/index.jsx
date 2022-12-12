@@ -22,25 +22,30 @@ export function CardDentistDetail(){
 
   }
 
-  console.log(openModal)
 
 
   return(
     <div className="container-detail-dentist">
       <div className="detail-dentist">
+        <div className="img-denstist">
         <img src={iconDentist} alt="" />
+        </div>
         <div className="container-info-dentist">
-          <span>{id}</span>
-          <span>sobrenome</span>
-          <span>username</span>
-          <button onClick={openModal ? unCheckedFavDentist: checkedFavDentist}>Agendar consulta</button>
+          <span className='name-dentist'>{id}</span>
+          <span className='username-dentist'>username</span>
+          <button
+            className='btn-schedule'
+            onClick={checkedFavDentist}
+            >Agendar consulta
+          </button>
         </div>
       </div>
-      <div className="container-modal">
+      {/* <div className="container-modal"> */}
         <ModalDentist
-          oncChangeModal={openModal}
+          onChangeModal={openModal}
+          onClosedModal={unCheckedFavDentist}
         />
-      </div>
+      {/* </div> */}
     </div>
   )
 }
