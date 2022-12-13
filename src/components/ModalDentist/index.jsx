@@ -53,7 +53,7 @@ export function ModalDentist(props){
   return(
     <div className={props.onChangeModal ? ' container-modal-show' : 'container-modal-notShow'}>
       <div className="header-shedule">
-        <h1 className='title-shedule'>Agende uma consulta com eduardo</h1>
+        <h1 className='title-shedule'>{`Agende uma consulta com ${props.data.nome}`}</h1>
         <button
           className='btn-closed'
           onClick={()=> props.onClosedModal()}

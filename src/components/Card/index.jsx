@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 export function CardDentist(props){
   const [fav, setFav] = useState(false)
   const [dentistFav, setDentistFav] = useState([])
-  
+
 
   const checkedFavDentist = () => {
 
@@ -42,7 +42,7 @@ export function CardDentist(props){
         </div>
         <Link
           className='btn-view-dentist'
-          to={`/dentist/${props.data.nome}`}
+          to={`/dentist/${props.data.matricula}`}
           >
           +
         </Link>

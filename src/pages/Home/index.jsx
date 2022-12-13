@@ -7,57 +7,70 @@ import './style.sass'
 
 export function Home(){
 
-  const dataUser = [{
+//   const dataUser = [{
 
-    nome: 'eduardo',
-    sobrenome: 'ananias',
-    matricula: '123',
+//     nome: 'eduardo',
+//     sobrenome: 'ananias',
+//     matricula: '123',
 
-  },
-  {
-    nome: 'camila',
-    sobrenome: 'araujo',
-    matricula: '1568',
+//   },
+//   {
+//     nome: 'camila',
+//     sobrenome: 'araujo',
+//     matricula: '1568',
 
-  },
-  {
-    nome: 'camila',
-    sobrenome: 'araujo',
-    matricula: '1568',
+//   },
+//   {
+//     nome: 'camila',
+//     sobrenome: 'araujo',
+//     matricula: '1568',
 
-  },
-  {
-    nome: 'camila',
-    sobrenome: 'araujo',
-    matricula: '1568',
+//   },
+//   {
+//     nome: 'camila',
+//     sobrenome: 'araujo',
+//     matricula: '1568',
 
-  },
-  {
-    nome: 'camila',
-    sobrenome: 'araujo',
-    matricula: '1568',
+//   },
+//   {
+//     nome: 'camila',
+//     sobrenome: 'araujo',
+//     matricula: '1568',
 
-  },
-  {
-    nome: 'camila',
-    sobrenome: 'araujo',
-    matricula: '1568',
+//   },
+//   {
+//     nome: 'camila',
+//     sobrenome: 'araujo',
+//     matricula: '1568',
 
-  },
-  {
-    nome: 'camila',
-    sobrenome: 'araujo',
-    matricula: '1568',
+//   },
+//   {
+//     nome: 'camila',
+//     sobrenome: 'araujo',
+//     matricula: '1568',
 
-  },
-  {
-    nome: 'camila',
-    sobrenome: 'araujo',
-    matricula: '1568',
+//   },
+//   {
+//     nome: 'camila',
+//     sobrenome: 'araujo',
+//     matricula: '1568',
 
-  }
-]
+//   }
+// ]
 
+const [dentist, setDentist] = useState([])
+
+useEffect(() =>{
+  fetch('https://dhodonto.ctdprojetos.com.br/dentista')
+  .then(res => {
+    res.json()
+    .then(dataDentist => {
+      setDentist(dataDentist)
+    })
+  })
+}, [])
+
+console.log(dentist)
 const [ favStorage, setFavStorage] = useState([])
 
 function teste(currentFav){
@@ -82,7 +95,7 @@ useEffect(() => {
         <h1>Conheça nossos dentistas</h1>
         <div className="list-card-dentist">
           {
-            dataUser.map((user) => (
+            dentist.map((user) => (
               <CardDentist
                 data = {user}
                 onClickFavorite = {currentFav => teste(currentFav) }
