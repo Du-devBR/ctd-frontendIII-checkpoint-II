@@ -4,44 +4,58 @@ import { useState } from 'react'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useNavigate } from 'react-router-dom'
 
+
 export function LoginUser(){
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
+  const [validation, setValidation] = useState(false)
 
-  // const [ tokeStorage, setTokenStorage] = useLocalStorage('', 'token')
+  console.log(validation)
 
- function getUser(event){
-  event.preventDefault()
-  const user = {
-    username: email,
-    password: password
-  }
-
-  const requestHeaders = {
-    'Content-Type': 'application/json'
-
-  }
-
-  const requestConfig = {
-    method: 'POST',
-    body: JSON.stringify(user),
-    headers: requestHeaders
-  }
-
-  fetch('http://dhodonto.ctdprojetos.com.br/auth', requestConfig)
-  .then(res => {
-    if(res.ok){
-      res.json()
-      .then(data => {
-      // setTokenStorage(data.token)
-      localStorage.setItem('token', data.token)
-      navigate('/home')
-    })
+  function validationForm(){
+    if(password.length >= 5){
+      setValidation(false)
+    }else{
+      setValidation(true)
     }
-  })
- }
+  }
+
+  function getUser(event){
+    event.preventDefault()
+    const user = {
+      username: email,
+      password: password
+    }
+
+    const requestHeaders = {
+      'Content-Type': 'application/json'
+
+    }
+
+    const requestConfig = {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: requestHeaders
+    }
+
+    fetch('http://dhodonto.ctdprojetos.com.br/auth', requestConfig)
+    .then(res => {
+      if(res.status === 200) {
+        // setValidation(false)
+        if(res.ok){
+          res.json()
+          .then(data => {
+          localStorage.setItem('token', data.token)
+          // navigate('/home')
+          })
+        }
+      }else{
+        // setValidation(true)
+      }
+    })
+  }
 
 
   return(
@@ -57,15 +71,22 @@ export function LoginUser(){
             type="text"
             placeholder='Email'
             onChange={event => setEmail(event.target.value)}
+            minLength={6}
+            required={true}
+            value={email}
           />
-          <input className='input-password'
+          <input className={validation ? 'error-form' : 'input-password'}
             type="text"
             placeholder='Senha'
             onChange={event => setPassword(event.target.value)}
+            minLength={6}
+            required={true}
+            value={password}
           />
           <button className='btn-submit-login'
             type="submit"
             onClick={event => getUser(event)}
+            disabled={password.length <=5 || email.length <=5}
             >Entrar
           </button>
         </form>

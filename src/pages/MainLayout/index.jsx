@@ -18,10 +18,10 @@ export function MainLayout(){
         <div className="aside-content">
           <ul className="content">
             <li className='item-list'>
-              <Link  to="home">Home</Link>
+              <Link  to="home">Inicio</Link>
             </li>
             <li className='item-list'>
-              <Link  to="fav">Fav</Link>
+              <Link  to="fav">Favoritos</Link>
             </li>
           </ul>
         </div>

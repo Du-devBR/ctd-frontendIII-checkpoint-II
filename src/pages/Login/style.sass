@@ -42,7 +42,7 @@
       gap: 1.5rem
       width: 100%
 
-      input
+      .input-password, .input-email
         width: 100%
         border: none
         border-radius: 0.5rem
@@ -50,6 +50,16 @@
         background-color: variables.$gray100-opacity10
         color: variables.$gray800
         font-size: variables.$h2-14px
+
+      .error-form
+        width: 100%
+        border: none
+        border-radius: 0.5rem
+        padding: 0.75rem 1rem
+        background-color: #ff1818
+        color: variables.$gray800
+        font-size: variables.$h2-14px
+
 
     .btn-submit-login
       padding: 1rem 0
@@ -61,3 +71,6 @@
       border: none
       border-radius: 1rem
       cursor: pointer
+
+    .btn-submit-login:disabled
+      background-color: #c2c2c2
