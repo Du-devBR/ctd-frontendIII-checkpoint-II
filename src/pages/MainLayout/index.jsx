@@ -2,8 +2,22 @@ import './style.sass'
 import logo  from '../../assets/img/logo.png'
 import { Home } from '../Home'
 import { Link, Outlet } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 export function MainLayout(){
+
+  const [ logout, setLogout] = useState(false)
+
+  useEffect(() => {
+    setLogout(localStorage.getItem('token'))
+  })
+
+  function logoutUser(){
+    setLogout(false)
+    localStorage.removeItem('token')
+  }
+
+  console.log(logout)
   return(
     <div className='container'>
       <header className='container-header'>
@@ -11,8 +25,14 @@ export function MainLayout(){
           <img src={logo} alt="desenho de um dente na cor azul e a frente está escrito Dente azul clinica Odontologica" />
         </div>
         <button className='btn-login'>
-              <Link  to="auth">Login</Link>
-            </button>
+              {
+                logout ? (
+                  <span onClick={logoutUser}>logout</span>
+                ): (
+                  <Link  to="auth">Login</Link>
+                )
+              }
+        </button>
       </header>
       <aside className="container-aside">
         <div className="aside-content">

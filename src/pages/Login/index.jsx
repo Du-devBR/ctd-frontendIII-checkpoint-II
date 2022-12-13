@@ -48,7 +48,7 @@ export function LoginUser(){
           res.json()
           .then(data => {
           localStorage.setItem('token', data.token)
-          // navigate('/home')
+          navigate('/home')
           })
         }
       }else{
