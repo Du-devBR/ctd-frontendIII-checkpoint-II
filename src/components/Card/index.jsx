@@ -3,10 +3,13 @@ import iconDentist from '../../assets/img/iconDentist.png'
 import { Star } from 'phosphor-react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTheme } from '../../hooks/UseTheme/useTheme'
 
 export function CardDentist(props){
   const [fav, setFav] = useState(false)
   const [dentistFav, setDentistFav] = useState([])
+
+  const {theme, changeTheme} =useTheme()
 
 
   const checkedFavDentist = () => {
@@ -29,19 +32,17 @@ export function CardDentist(props){
 
   }
 
-  console.log(dentistFav)
   return(
     <>
-      <div className="container-card">
+      <div className={`container-card ${theme}`}>
 
         <div className="dentist-info">
-          {/* <Star className={`fav-dentist ${fav ? 'select-fav' : '' }`} onClick={fav ? unCheckedFavDentist : checkedFavDentist}/> */}
           <Star className={`fav-dentist ${fav ? 'select-fav' : '' }`} onClick={fav ? unCheckedFavDentist : checkedFavDentist}/>
           <img src={iconDentist} alt="icone dentista sexo feminino, jaleco cor branco e cabelo cor marrom" />
-          <p>{props.data.nome} {props.data.sobrenome}</p>
+          <p className={`name-dentist ${theme}`}>{props.data.nome} {props.data.sobrenome}</p>
         </div>
         <Link
-          className='btn-view-dentist'
+          className={`btn-view-dentist ${theme}`}
           to={`/dentist/${props.data.matricula}`}
           >
           +

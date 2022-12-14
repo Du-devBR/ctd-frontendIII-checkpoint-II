@@ -1,6 +1,7 @@
 import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
 import { CardDentist } from "./components/Card";
 import { CardDentistDetail } from "./components/CardDentistId";
+import { ThemeProvider } from "./hooks/UseTheme/useTheme";
 import { FavDentist } from "./pages/Favorites";
 import { Home } from "./pages/Home";
 import { LoginUser } from "./pages/Login";
@@ -35,8 +36,8 @@ export function App() {
   ])
 
   return (
-    <div>
+    <ThemeProvider>
       <RouterProvider router={appRouter} />
-    </div>
+    </ThemeProvider>
   )
 }

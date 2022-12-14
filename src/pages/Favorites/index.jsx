@@ -20,7 +20,7 @@ export function FavDentist(){
     }
   }, [favorite])
   return(
-    <div className="teste">
+    <div className="list-card-dentist-favorite">
       {
         arrayFavorite.map((user) =>(
           <CardDentist

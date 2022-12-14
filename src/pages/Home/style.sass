@@ -1,11 +1,16 @@
 @use '../../style/variables'
 .content-home
+  display: flex
+  justify-content: space-between
   width: 100%
-  background: url('../../assets/img/banner-home.png')
-  background-repeat: no-repeat
-  background-size: cover
+  height: 12.5rem
+  background-image: variables.$linear-primary-color-banner
   border-radius: 1rem
   overflow: hidden
+
+  &.dark
+    background-image: variables.$linear-primary-color-banner-dark
+
 
   .banner-info
     max-width: 25rem
@@ -17,7 +22,7 @@
 
     h1
       font-weight: variables.$fond-xs
-      color: variables.$gray0
+      color: variables.$gray800
       font-size: variables.$h1-24px
 
     p
@@ -31,10 +36,13 @@
   gap: 2rem
   margin: 4rem 0
 
-  h1
+  .title-section-detists
     font-size: variables.$h1-24px
     font-weight: variables.$fond-xs
     color: variables.$gray800
+
+    &.dark
+      color: variables.$gray1000
 
   .list-card-dentist
     display: grid

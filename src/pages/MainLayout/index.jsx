@@ -1,12 +1,22 @@
 import './style.sass'
 import logo  from '../../assets/img/logo.png'
-import { Home } from '../Home'
+import logoDark from '../../assets/img/logo-dark.png'
+// import { Home } from '../Home'
 import { Link, Outlet } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { useTheme } from '../../hooks/UseTheme/useTheme'
+
 
 export function MainLayout(){
 
   const [ logout, setLogout] = useState(false)
+
+  const { theme, changeTheme } = useTheme()
+
+  const isDarkMode = theme === "dark" || false;
+
+  console.log(theme)
+
 
   useEffect(() => {
     setLogout(localStorage.getItem('token'))
@@ -17,14 +27,22 @@ export function MainLayout(){
     localStorage.removeItem('token')
   }
 
-  console.log(logout)
+  function changeThemePage(){
+    if(theme === 'dark'){
+      changeTheme('light')
+    }else{
+      changeTheme('dark')
+    }
+  }
+
   return(
-    <div className='container'>
-      <header className='container-header'>
+    <div className={`container ${theme}`}>
+      <header className={`container-header ${theme}`}>
         <div className="logo-dente-azul">
-          <img src={logo} alt="desenho de um dente na cor azul e a frente está escrito Dente azul clinica Odontologica" />
+          <img src={isDarkMode ? logoDark : logo} alt="desenho de um dente na cor azul e a frente está escrito Dente azul clinica Odontologica" />
         </div>
-        <button className='btn-login'>
+        <button onClick={changeThemePage}>{isDarkMode ? "☀" : "🌙"}</button>
+        <button className={`btn-login ${theme}`}>
               {
                 logout ? (
                   <span onClick={logoutUser}>logout</span>
@@ -34,20 +52,20 @@ export function MainLayout(){
               }
         </button>
       </header>
-      <aside className="container-aside">
-        <div className="aside-content">
+      <aside className={`container-aside ${theme}`}>
+        <div className={`aside-content ${theme}`}>
           <ul className="content">
-            <li className='item-list'>
-              <Link  to="home">Inicio</Link>
+            <li className={`item-list ${theme}`}>
+              <Link className={`link-page ${theme}`}  to="home">Inicio</Link>
             </li>
-            <li className='item-list'>
-              <Link  to="fav">Favoritos</Link>
+            <li className={`item-list ${theme}`}>
+              <Link className={`link-page ${theme}`}  to="fav">Favoritos</Link>
             </li>
           </ul>
         </div>
       </aside>
-      <main className="container-main">
-        <div className="main-content">
+      <main className={`container-main ${theme}`}>
+        <div className={`main-content ${theme}`}>
           <Outlet />
         </div>
       </main>

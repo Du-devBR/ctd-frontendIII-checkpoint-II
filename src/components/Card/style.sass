@@ -4,8 +4,10 @@
   justify-content: space-between
   background-color: variables.$gray100
   border-radius: 0.75rem
-  // padding: 1rem 0 1rem 1rem
   max-width: 25rem
+
+  &.dark
+    background-color: variables.$gray800
 
   .fav-dentist
     width: 1.25rem
@@ -26,9 +28,14 @@
       width: 3.75rem
       height: 3.75rem
 
-    p
+    .name-dentist
       font-size: variables.$h2-14px
       font-weight: variables.$fond-xs
+      color: variables.$gray800
+
+      &.dark
+        color: variables.$gray100
+
 
   .btn-view-dentist
     display: flex
@@ -42,6 +49,9 @@
     font-size: variables.$h2-18px
     font-weight: variables.$fond-xs
     color: variables.$gray1000
+
+    &.dark
+      background-color: variables.$gray100
 
   .btn-view-dentist:hover
     background-color: variables.$second-color

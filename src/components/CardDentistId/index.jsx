@@ -3,14 +3,13 @@ import iconDentist from '../../assets/img/iconDentist.png'
 import { useParams } from 'react-router-dom'
 import { ModalDentist } from '../ModalDentist'
 import { useEffect, useState } from 'react'
+import { useTheme } from '../../hooks/UseTheme/useTheme'
 
 export function CardDentistDetail(){
   const { id } = useParams()
   const [openModal, setOpenModal] = useState(false)
   const [dentistId, setDentistId] = useState('')
-
-
-  console.log(dentistId)
+  const {theme, changeTheme} = useTheme()
 
   useEffect(() => {
       fetch(`http://dhodonto.ctdprojetos.com.br/dentista?matricula=${id}`)
@@ -42,15 +41,15 @@ export function CardDentistDetail(){
       {
         dentistId ? (
           <>
-            <div className="detail-dentist">
+            <div className={`detail-dentist ${theme}`}>
               <div className="img-denstist">
                 <img src={iconDentist} alt="" />
               </div>
               <div className="container-info-dentist">
-                <span className='name-dentist'>{dentistId.nome}</span>
-                <span className='username-dentist'>{dentistId.usuario.username}</span>
+                <span className={`name-dentist ${theme}`}>{dentistId.nome}</span>
+                <span className={`username-dentist ${theme}`}>{dentistId.usuario.username}</span>
                 <button
-                  className='btn-schedule'
+                  className={`btn-schedule ${theme}`}
                   onClick={checkedFavDentist}
                   >Agendar consulta
                 </button>
