@@ -85,6 +85,7 @@ export function LoginUser(){
             value={password}
           />
           <button className='btn-submit-login'
+            aria-label='btn-submit'
             type="submit"
             onClick={event => getUser(event)}
             disabled={password.length <=5 || email.length <=5}
