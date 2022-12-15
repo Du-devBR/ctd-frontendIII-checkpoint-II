@@ -1,8 +1,8 @@
 import './style.sass'
 import logoLogin from '../../assets/img/logoLogin.png'
 import { useState } from 'react'
-import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useNavigate } from 'react-router-dom'
+import { useTheme } from '../../hooks/UseTheme/useTheme'
 
 
 export function LoginUser(){
@@ -11,6 +11,7 @@ export function LoginUser(){
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
   const [validation, setValidation] = useState(false)
+  const {theme, changeTheme} = useTheme()
 
   console.log(validation)
 
@@ -59,15 +60,15 @@ export function LoginUser(){
 
 
   return(
-    <div className='container-login'>
-      <div action="" className='container-content-form'>
+    <div className={`container-login ${theme}`}>
+      <div action="" className={`container-content-form ${theme}`}>
         <img src={logoLogin} alt="desenho de um dente na cor azul e a frente está escrito Dente azul clinica Odontologica" />
         <div className="title-form">
           <h1>Seja bem vindo novamente</h1>
           <span>Digite os dados abaixo para realizar seu login</span>
         </div>
         <form action="" className='form'>
-          <input className='input-email'
+          <input className={`input-email ${theme}`}
             type="text"
             placeholder='Email'
             onChange={event => setEmail(event.target.value)}
@@ -75,7 +76,7 @@ export function LoginUser(){
             required={true}
             value={email}
           />
-          <input className={validation ? 'error-form' : 'input-password'}
+          <input className={validation ? 'error-form' : `input-password ${theme}`}
             type="text"
             placeholder='Senha'
             onChange={event => setPassword(event.target.value)}

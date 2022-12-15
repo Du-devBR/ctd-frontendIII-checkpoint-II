@@ -1,8 +1,6 @@
 @use '../../style/variables'
 .container-modal-notShow
   opacity: 0
-  // opacity: 1
-    // visibility: visible
   position: absolute
 
 .container-modal-show
@@ -20,6 +18,10 @@
   padding: 1rem
   gap: 2rem
 
+  &.dark
+    background-color: variables.$gray800
+    border: none
+
 
   .header-shedule
     display: flex
@@ -32,6 +34,9 @@
       font-weight: variables.$fond-xs
       color: variables.$gray1000
 
+      &.dark
+        color: variables.$gray100
+
     .btn-closed
       color: variables.$gray600
       border: none
@@ -39,6 +44,9 @@
       font-size: variables.$h2-18px
       font-weight: variables.$fond-xs
       cursor: pointer
+
+      &.dark
+        color: variables.$gray100
 
   .form-shedule
     display: flex
@@ -50,20 +58,30 @@
       flex-direction: column
       gap: 0.5rem
 
+      &.dark
+        color: variables.$gray100
+
       label
         font-size: variables.$h2-14px
         font-weight: variables.$font-md
         color: variables.$gray800
 
-      select
+      .select-dentist, .select-pacient
         border: none
         background-color: variables.$gray100-opacity10
         padding: 0.5rem
         border-radius: 0.75rem
         color: variables.$gray600
 
-        option
+        &.dark
+          background-color: variables.$gray100
+          color: variables.$gray800
+
+        .option-pacient, .option-dentist
           color: variables.$gray600
+
+          &.dark
+            color: variables.$gray800
 
     .date-time-shedule
       border: none
@@ -71,6 +89,10 @@
       padding: 0.5rem
       border-radius: 0.75rem
       color: variables.$gray600
+
+      &.dark
+        background-color: variables.$gray100
+        color: variables.$gray800
 
 
     .btn-submit-shedule
@@ -85,3 +107,6 @@
       font-size: variables.$h2-14px
       text-transform: uppercase
       cursor: pointer
+
+      &.dark
+        background-color: variables.$gray300

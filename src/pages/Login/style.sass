@@ -9,6 +9,9 @@
   background: variables.$linear-primary-color
   overflow: hidden
 
+  &.dark
+    background: variables.$linear-primary-color-banner-dark
+
   .container-content-form
     display: flex
     flex-direction: column
@@ -18,6 +21,9 @@
     border-radius: 1rem
     width: 500px
     align-items: center
+
+    &.dark
+      background-color: variables.$gray300
 
     .title-form
       display: flex
@@ -51,6 +57,10 @@
         color: variables.$gray800
         font-size: variables.$h2-14px
 
+        &.dark
+          color: variables.$gray1000
+          background-color: variables.$gray100
+
       .error-form
         width: 100%
         border: none
@@ -73,4 +83,4 @@
       cursor: pointer
 
     .btn-submit-login:disabled
-      background-color: #c2c2c2
+      background-color: variables.$primary-color-opacity10

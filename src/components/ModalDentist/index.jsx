@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from 'react'
+import { useTheme } from '../../hooks/UseTheme/useTheme'
 import './style.sass'
 
 export function ModalDentist(props){
@@ -9,6 +10,8 @@ export function ModalDentist(props){
   const [consult, setConsult] = useState()
 
   const [idPacient, setIdPacient] = useState()
+
+  const { theme, changeTheme} = useTheme()
 
   useEffect(() => {
     fetch('https://dhodonto.ctdprojetos.com.br/paciente')
@@ -27,9 +30,6 @@ export function ModalDentist(props){
       })
     })
   }, [])
-
-  // console.log(pacientList)
-  // console.log(dentistList)
 
   const dataConsult = (event) => {
     event.preventDefault()
@@ -51,23 +51,24 @@ export function ModalDentist(props){
     console.log(dataConsultShedule)
   }
   return(
-    <div className={props.onChangeModal ? ' container-modal-show' : 'container-modal-notShow'}>
-      <div className="header-shedule">
-        <h1 className='title-shedule'>{`Agende uma consulta com ${props.data.nome}`}</h1>
+    <div className={props.onChangeModal ? `container-modal-show ${theme}` : `container-modal-notShow ${theme}`}>
+      <div className={`header-shedule ${theme}`}>
+        <h1 className={`title-shedule ${theme}`}>{`Agende uma consulta com ${props.data.nome}`}</h1>
         <button
-          className='btn-closed'
+          className={`btn-closed ${theme}`}
           onClick={()=> props.onClosedModal()}
           >
             x
         </button>
       </div>
-      <form className='form-shedule' onSubmit={event => dataConsult(event)}>
-        <div className="input-pacient">
+      <form className={`form-shedule ${theme}`} onSubmit={event => dataConsult(event)}>
+        <div className={`input-pacient ${theme}`}>
           <label htmlFor="pacient">Paciente</label>
-          <select name="pacient" id="pacient">
+          <select className={`select-pacient ${theme}`} name="pacient" id="pacient">
             {
               pacientList.map((pacient) => (
                 <option
+                  className={`option-pacient ${theme}`}
                   value={pacient.matricula}
                   key={pacient.matricula}
                   >
@@ -77,12 +78,13 @@ export function ModalDentist(props){
             }
           </select>
         </div>
-        <div className="input-dentist">
+        <div className={`input-dentist ${theme}`}>
           <label htmlFor="dentist">Dentista</label>
-          <select name="dentist" id="dentist">
+          <select className={`select-dentist ${theme}`} name="dentist" id="dentist">
             {
               dentistList.map((dentist) => (
                 <option
+                  className={`option-dentist ${theme}`}
                   value={dentist.matricula}
                   key={dentist.matricula}
                   >
@@ -93,13 +95,13 @@ export function ModalDentist(props){
           </select>
         </div>
         <input
-          className='date-time-shedule'
+          className={`date-time-shedule ${theme}`}
           type="datetime-local"
           name="teste" id="teste"
         />
         <button
           type="submit"
-          className='btn-submit-shedule'
+          className={`btn-submit-shedule ${theme}`}
           >
             enviar
         </button>
