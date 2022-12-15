@@ -22,8 +22,12 @@ export function CardDentistDetail(){
 
   const checkedFavDentist = () => {
 
-    setOpenModal(true)
-    console.log('adicionado')
+    if(localStorage.getItem('token') === null){
+      alert("Necessario fazer login para marcar uma consulta!!!")
+    }else{
+      setOpenModal(true)
+      console.log('adicionado')
+    }
 
   }
 

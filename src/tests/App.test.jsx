@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest"
 import { LoginUser } from '../pages/Login'
 import { MainLayout } from '../pages/MainLayout'
 import { fireEvent, render, screen } from './test-utils'
+import { ModalDentist} from '../components/ModalDentist'
 
 test('Inicio fluxo tela principal main layout', () => {
   render(<MainLayout />)

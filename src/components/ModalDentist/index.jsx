@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTheme } from '../../hooks/UseTheme/useTheme'
 import './style.sass'
 
@@ -7,7 +8,6 @@ export function ModalDentist(props){
 
   const [pacientList, setPacientList] = useState([])
   const [dentistList, setdentistList] = useState([])
-  const [consult, setConsult] = useState()
 
   const [idPacient, setIdPacient] = useState()
 
@@ -38,6 +38,9 @@ export function ModalDentist(props){
 
     const data = Object.fromEntries(formData)
 
+    console.log(data)
+    const token = localStorage.getItem('token')
+
     const dataConsultShedule = {
       paciente: {
         matricula: data.pacient
@@ -45,10 +48,35 @@ export function ModalDentist(props){
       dentista: {
         matricula: data.dentist
       },
-      dataHoraAgendamento: data.teste
+      dataHoraAgendamento: data.dataShedule
     }
 
-    console.log(dataConsultShedule)
+    const requestHeaders = {
+      "Content-Type" : "application/json",
+      Authorization: `Bearer ${token}`
+    }
+
+    const requestConfig = {
+      method: 'POST',
+      body: JSON.stringify(dataConsultShedule),
+      headers: requestHeaders
+    }
+
+    try {
+      fetch('https://dhodonto.ctdprojetos.com.br/consulta', requestConfig)
+      .then(res => {
+        console.log(res)
+        if(res.ok){
+          alert('Consulta agendada com sucesso')
+          useNavigate('/home')
+        }else{
+          alert('Erro ao cadastrar consulta')
+        }
+      })
+
+    } catch (error) {
+      alert(error.message)
+    }
   }
   return(
     <div className={props.onChangeModal ? `container-modal-show ${theme}` : `container-modal-notShow ${theme}`}>
@@ -97,7 +125,7 @@ export function ModalDentist(props){
         <input
           className={`date-time-shedule ${theme}`}
           type="datetime-local"
-          name="teste" id="teste"
+          name="dataShedule" id="dataShedule"
         />
         <button
           type="submit"
