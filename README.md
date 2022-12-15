@@ -24,7 +24,6 @@ Para logar na aplicação, utilize:
 
 ````
 
-````
 ## Instalação e setups
 Rode os comandos pelo Npm e instale os pacotes necessarios
 
@@ -33,12 +32,16 @@ clone o respositorio git hub
 
 Install
 
-`npm install`
+````
+npm install
+````
 
 Run
-
-`npm run start`
+````
+npm run start
+````
 
 Run test
-
-`npm test`
+````
+npm test
+````
