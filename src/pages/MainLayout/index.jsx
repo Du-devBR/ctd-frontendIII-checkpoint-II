@@ -41,16 +41,20 @@ export function MainLayout(){
         <div className="logo-dente-azul">
           <img src={isDarkMode ? logoDark : logo} alt="desenho de um dente na cor azul e a frente está escrito Dente azul clinica Odontologica" />
         </div>
-        <button onClick={changeThemePage}>{isDarkMode ? "☀" : "🌙"}</button>
-        <button className={`btn-login ${theme}`}>
-              {
-                logout ? (
-                  <span onClick={logoutUser}>logout</span>
-                ): (
-                  <Link  to="auth">Login</Link>
-                )
-              }
-        </button>
+        <div className="nav-btn">
+          <div className={`container-btn-change-theme ${theme}`}>
+            <button className={`btn-change-theme ${theme}`} onClick={changeThemePage}>{isDarkMode ? "🌙" : "☀"}</button>
+          </div>
+          <button className={`btn-login ${theme}`}>
+                {
+                  logout ? (
+                    <span onClick={logoutUser}>logout</span>
+                  ): (
+                    <Link  to="auth">Login</Link>
+                  )
+                }
+          </button>
+        </div>
       </header>
       <aside className={`container-aside ${theme}`}>
         <div className={`aside-content ${theme}`}>

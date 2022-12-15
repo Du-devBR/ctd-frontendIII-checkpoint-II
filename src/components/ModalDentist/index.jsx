@@ -63,7 +63,7 @@ export function ModalDentist(props){
       </div>
       <form className={`form-shedule ${theme}`} onSubmit={event => dataConsult(event)}>
         <div className={`input-pacient ${theme}`}>
-          <label htmlFor="pacient">Paciente</label>
+          <label className={`label-pacient ${theme}`} htmlFor="pacient">Paciente</label>
           <select className={`select-pacient ${theme}`} name="pacient" id="pacient">
             {
               pacientList.map((pacient) => (
@@ -79,7 +79,7 @@ export function ModalDentist(props){
           </select>
         </div>
         <div className={`input-dentist ${theme}`}>
-          <label htmlFor="dentist">Dentista</label>
+          <label className={`label-dentist ${theme}`} htmlFor="dentist">Dentista</label>
           <select className={`select-dentist ${theme}`} name="dentist" id="dentist">
             {
               dentistList.map((dentist) => (

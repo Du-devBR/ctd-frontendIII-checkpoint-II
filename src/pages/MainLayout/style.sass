@@ -19,28 +19,61 @@
       background-image: variables.$linear-primary-color-dark
       transition: 0.6s
 
-    .btn-login
-      padding: 0.75rem 4rem
-      background-color: variables.$second-color
-      border: none
-      border-radius: 1rem
-      cursor: pointer
-      transition: 0.6s
+    .nav-btn
+      display: flex
+      gap: 1rem
+      align-items: center
 
-      &.dark
-        background-color: variables.$gray100
+      .container-btn-change-theme
+        width: 4rem
+        border: none
+        border-radius: 0.5rem
+        padding: 2px
+        transition: 1s
+        background-color: variables.$second-color-500
 
-      a
-        color: variables.$gray0
-        font-weight: variables.$fond-xs
-        text-transform: uppercase
+        &.dark
+          background-color: variables.$primary-color-opacity10
+
+        .btn-change-theme
+          transform: translateX(2.5rem)
+          transition: 1s
+          width: 20px
+          height: 20px
+          border: none
+          border-radius: 50%
+          background-color: variables.$second-color
+          color: variables.$gray0
+
+          &.dark
+            // text-align: left
+            transform: translateX(0)
+            transition: 1s
+            background-color: variables.$primary-color
+            color: variables.$gray0
+
+      .btn-login
+        padding: 0.75rem 4rem
+        background-color: variables.$second-color
+        border: none
+        border-radius: 1rem
+        cursor: pointer
         transition: 0.6s
 
-      span
-        color: variables.$gray1000
-        font-weight: variables.$fond-xs
-        text-transform: uppercase
-        transition: 0.6s
+        &.dark
+          background-color: variables.$gray100
+
+        a
+          color: variables.$gray0
+          font-weight: variables.$fond-xs
+          text-transform: uppercase
+          transition: 0.6s
+
+        span
+          color: variables.$gray1000
+          font-weight: variables.$fond-xs
+          text-transform: uppercase
+          transition: 0.6s
 
   .container-aside
     grid-area: aside
