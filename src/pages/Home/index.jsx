@@ -5,7 +5,6 @@ import { CardDentist } from '../../components/Card'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useTheme } from '../../hooks/UseTheme/useTheme'
 import './style.sass'
-// import bannerHome from '../../assets/img/banner-home.png'
 
 export function Home(){
 
@@ -51,7 +50,6 @@ useEffect(() => {
               <CardDentist
                 data = {user}
                 onClickFavorite = {currentFav => teste(currentFav) }
-                // onchangeFav = {currentFavSelect => checkedFavDentist(currentFavSelect)}
               />
             ))
           }

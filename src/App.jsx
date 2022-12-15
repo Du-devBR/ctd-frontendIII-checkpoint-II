@@ -15,7 +15,6 @@ export function App() {
       element: <LoginUser />,
     },
     {
-      // path: "/", loader:() => redirect('/auth'),
       path: '',
       element: <MainLayout />,
       children: [

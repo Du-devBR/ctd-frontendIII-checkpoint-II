@@ -1,7 +1,6 @@
 import './style.sass'
 import logo  from '../../assets/img/logo.png'
 import logoDark from '../../assets/img/logo-dark.png'
-// import { Home } from '../Home'
 import { Link, Outlet } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useTheme } from '../../hooks/UseTheme/useTheme'

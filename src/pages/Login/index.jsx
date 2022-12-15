@@ -44,7 +44,6 @@ export function LoginUser(){
     fetch('http://dhodonto.ctdprojetos.com.br/auth', requestConfig)
     .then(res => {
       if(res.status === 200) {
-        // setValidation(false)
         if(res.ok){
           res.json()
           .then(data => {
@@ -53,7 +52,6 @@ export function LoginUser(){
           })
         }
       }else{
-        // setValidation(true)
       }
     })
   }
